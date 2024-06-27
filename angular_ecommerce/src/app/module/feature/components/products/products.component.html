@@ -1,0 +1,90 @@
+<div class="flex flex-col items-center">
+
+    <main class="max-w-7x1 px-4 sm:px-6 lg:px-10 pb-10">
+        <div class="flex items-baseline justify-between border-gray-200 pt-10">
+            <h5 class="font-bold text-white">Products</h5>
+
+            <div class="flex items-center">
+                <div>
+                    <button mat-button [matMenuTriggerFor]="sortMenu">Sort</button>
+    
+                    <mat-menu #sortMenu="matMenu">
+                    <button mat-menu-item (click)="handleSingleSelectFilter('price_high', 'sort')">Price: High - Low</button>
+                    <button mat-menu-item (click)="handleSingleSelectFilter('price_low', 'sort')">Price: Low - High</button>
+                    </mat-menu> 
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <section class="pt-6">
+            <div class="grid grid-cols-1 gap-8 gap-y-10 lg:grid-cols-4">
+                <div>
+                    <div class="flex items-center justify-between">
+                        <p class="text-lg">Filters</p>
+                        <mat-icon>filter_list</mat-icon>
+                    </div>
+
+                    <form class="hidden lg:block">
+                        <div *ngFor="let item of filterData let last = last">
+                            <div class="py-6">
+                                <span class="font-medium">{{item.name}}</span>
+
+                                <div class="pt-6" id="filter-section-0">
+                                    <div class="scroll-py-4">
+                                        <div *ngFor="let option of item.options">
+                                            <div class="flex items-center">
+
+                                                <mat-checkbox id="'filter - '+ option.value"
+                                                [name]="item.id" [value]="option.value" (click)="handleMultipleSeclectFilter(option.value, item.id)">
+                                                    <span class="text-sm text-gray-500">
+                                                        {{option.label}}
+                                                    </span>
+                                                
+                                                </mat-checkbox>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <mat-divider *ngIf="!last"></mat-divider>
+                        </div>
+
+                        <div *ngFor="let item of singleFilterData let last = last">
+                            <div class="py-6">
+                                <span class="font-medium">{{item.name}}</span>
+
+                                <div class="pt-6" id="filter-section-0">
+                                    <div class="scroll-py-4">
+                                        <div *ngFor="let option of item.options">
+                                            <div class="flex items-center">
+
+                                                <mat-radio-button id="'filter - '+ option.value"
+                                                [name]="item.id" [value]="option.value" (click)="handleSingleSelectFilter(option.value, item.id)">
+                                                    <span class="text-sm text-gray-500">
+                                                        {{option.label}}
+                                                    </span>
+                                                
+                                                </mat-radio-button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <mat-divider *ngIf="!last"></mat-divider>
+                        </div>
+                    </form>
+                </div>
+                <div class="lg:col-span-3">
+                    <div class="flex flex-wrap justify-evenly">
+                        <ng-container *ngFor="let item of products">
+                            <app-product-card [product]="item"></app-product-card>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+</div>

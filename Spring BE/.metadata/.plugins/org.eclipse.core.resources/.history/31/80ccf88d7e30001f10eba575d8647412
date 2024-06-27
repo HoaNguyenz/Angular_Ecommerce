@@ -1,0 +1,5 @@
+package com.hoa.repository;
+
+public interface AddressRepository {
+
+}

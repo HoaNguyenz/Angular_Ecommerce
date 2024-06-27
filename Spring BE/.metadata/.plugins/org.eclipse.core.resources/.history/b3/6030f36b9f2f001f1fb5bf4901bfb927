@@ -1,0 +1,34 @@
+package com.hoa.service;
+
+import org.springframework.stereotype.Service;
+
+import com.hoa.config.JwtProvider;
+import com.hoa.exception.UserException;
+import com.hoa.model.User;
+import com.hoa.repository.UserRepository;
+
+
+@Service
+public class UserServiceImplementation implements UserService {
+
+	private UserRepository userRepository;
+	private JwtProvider jwtProvider;
+	
+	public UserServiceImplementation(UserRepository userRepository, JwtProvider jwtProvider) {
+		this.jwtProvider = jwtProvider;
+		this.userRepository = userRepository;
+	}
+	
+	@Override
+	public User findUserbyId(Long userId) throws UserException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User findUserProfileByJwt(String jwt) throws UserException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

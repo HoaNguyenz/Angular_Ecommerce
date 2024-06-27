@@ -1,0 +1,15 @@
+<div class="w-full">
+
+    <div class="bg-gray-950 text-white w-full h-1/2 shadow-lg p-6">
+        <div class="flex justify-around">
+            <div class="flex flex-col pt-8" *ngFor="let item of category[selectedSection].sections">
+                <h5 class="text-center">{{item.name}}</h5>
+
+                <button (click)="handleNavigate('/'+selectedSection+'/'+item.id+'/'+section.id)" mat-button *ngFor="let section of item.items">{{section.name}}</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+

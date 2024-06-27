@@ -1,0 +1,54 @@
+<div class="fixed top-0 z-50 right-0 left-0 bg-[#004f4f] text-cyan-200">
+
+    <div class="h-16 flex justify-between">
+        
+        <div class="flex items-center md:ml-5 ml-3">
+            <div class="lg:ml-5 mr-5">LOGO</div>
+
+            <div class="">
+                <div class="flex items-center space-x-4">
+                    <a routerLink="/">Angular Shop</a>
+
+                    <div class="open_button">
+                        <button class="open_button" (click)="openNavBarContent('shoes')" mat-button >Shoes</button>
+
+                        <button class="open_button" (click)="openNavBarContent('sports_ware')" mat-button >Sportsware</button>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex items-center md:mr-5">
+            <button (click)="navigateTo('cart')" mat-icon-button class="lg:mr-5">
+                <mat-icon color="primary">shopping_cart</mat-icon>
+            </button>
+
+            <button mat-stroked-button color="accent" *ngIf="!userProfile" class="lg:mr-5" (click)="handleOpenLoginModel()">LOGIN</button>
+
+            <div class="relative ml-3 items-center" *ngIf="userProfile">
+                <div class="flex items-center">
+                    <span class="text-lg lg:mr-5">{{userProfile.firstName}}</span>
+
+                    <button mat-button [matMenuTriggerFor]="profileMenu">
+                        <mat-icon class="scale-150">account_circle</mat-icon>
+                    </button>
+
+
+                    <mat-menu #profileMenu="matMenu">
+                        <button mat-menu-item (click)="navigateTo('account/orders')">Orders</button>
+                        <button mat-menu-item>Profile</button>
+                        <button mat-menu-item (click)="handleLogout()">Logout</button>
+                    </mat-menu>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isNavbarContentOpen" class="modal-container">
+    <app-nav-content [selectedSection]="currentSection"></app-nav-content>
+
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <h5>Ecommerce</h5>
+
+        <div>
+            <mat-form-field class="w-full">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" required email>
+                <mat-error *ngIf="loginForm.controls['email'].hasError('required')">Email Is Required</mat-error>
+                <mat-error *ngIf="loginForm.controls['email'].hasError('email')">Please enter a valid email address</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" required>
+                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Password Is Required</mat-error>
+                <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">Password should be at least 8 characters long</mat-error>
+            </mat-form-field>
+
+            <div>
+                <button type="submit" mat-raised-button class="w-full" style="padding: 1.7rem;" color="accent">LOGIN</button>
+            </div>
+
+            <div class="pt-5">
+                <span>Don't have an account?</span>
+                <button mat-button color="accent" (click)="changeTemplate()">REGISTER</button>
+            </div>
+        </div>
+    </form>
+</div>

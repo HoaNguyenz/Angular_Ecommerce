@@ -1,0 +1,15 @@
+package com.hoa.service;
+
+import com.hoa.exception.ProductException;
+import com.hoa.model.Cart;
+import com.hoa.model.User;
+import com.hoa.request.AddItemRequest;
+
+public interface CartService {
+	
+	public Cart createCart(User user);
+	
+	public String addCartItem(Long userId, AddItemRequest req) throws ProductException;
+	
+	public Cart findUserCart(Long userId);
+}

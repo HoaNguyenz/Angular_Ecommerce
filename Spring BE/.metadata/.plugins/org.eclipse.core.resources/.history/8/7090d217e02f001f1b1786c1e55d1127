@@ -1,0 +1,5 @@
+package com.hoa.model;
+
+public class CartItem {
+
+}

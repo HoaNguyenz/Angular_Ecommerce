@@ -1,0 +1,19 @@
+<div (click)="navigate()" class="productCard w-[17rem] m-3 transition-all cursor-pointer overflow-hidden rounded-lg">
+    <div class="h-[20rem]">
+        <img class="h-full w-full" [src]="product.imageUrl" alt="">
+    </div>
+
+    <div class="textPart p-3 bg-[#0b0b0b] max-w-17rem">
+        <div>
+            <p class="opacity-80">{{product.brand}}</p>
+            <p class="text-wrap break-words">{{product.title}}</p>
+            <p class="text-gray-600">{{product.color}}</p>
+
+        </div>
+
+        <div class="flex flex-wrap space-x-2 items-center">
+            <p class="font-bold text-teal-400">${{product.price}}</p>
+        </div>
+    </div>
+
+</div>
